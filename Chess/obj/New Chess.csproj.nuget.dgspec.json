@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\djcoh\\Documents\\Visual Studio 2019\\Projects\\New Chess\\New Chess.csproj": {}
+    "C:\\Users\\Student\\git\\Chess\\Chess\\New Chess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\djcoh\\Documents\\Visual Studio 2019\\Projects\\New Chess\\New Chess.csproj": {
+    "C:\\Users\\Student\\git\\Chess\\Chess\\New Chess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djcoh\\Documents\\Visual Studio 2019\\Projects\\New Chess\\New Chess.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\git\\Chess\\Chess\\New Chess.csproj",
         "projectName": "New Chess",
-        "projectPath": "C:\\Users\\djcoh\\Documents\\Visual Studio 2019\\Projects\\New Chess\\New Chess.csproj",
-        "packagesPath": "C:\\Users\\djcoh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djcoh\\Documents\\Visual Studio 2019\\Projects\\New Chess\\obj\\",
+        "projectPath": "C:\\Users\\Student\\git\\Chess\\Chess\\New Chess.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Student\\git\\Chess\\Chess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\djcoh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -6,11 +6,10 @@ namespace New_Chess
     {
         static void Main(string[] args)
         {
-            IO.startGame();
-            int repeatPlaceHolder = 255;
-            while (repeatPlaceHolder == 255)
+            Setup.startGame();
+            while (1 == 1)
             {
-                IO.movePiece();
+                Setup.movePiece();
             }
         }
     }
