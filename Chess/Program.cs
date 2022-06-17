@@ -9,7 +9,10 @@ namespace New_Chess
             Setup.startGame();
             while (1 == 1)
             {
-                Setup.movePiece();
+                Setup.printBoard();
+                Setup.playTurn();
+                Console.WriteLine("---------------------------");
+
             }
         }
     }
