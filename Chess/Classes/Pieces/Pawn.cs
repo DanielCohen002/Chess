@@ -6,11 +6,11 @@ namespace New_Chess.Classes.Pieces
 {
     public class Pawn : ChessPiece
     {
-        public Pawn(string name, string color, int[] locatiorn)
+        public Pawn(string name, string color, int[] location)
         {
             Name = name;
             Color = color;
-            Location = locatiorn;
+            Location = location;
         }
         public Pawn() { }
     }

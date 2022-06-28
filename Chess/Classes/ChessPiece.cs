@@ -15,9 +15,9 @@ namespace New_Chess.Classes
 
 
         //METHODS
-        public virtual void Move(int[] newLocation) 
-        {
-            this.Location = newLocation;
-        }
+        //public virtual void Move(int[] newLocation) 
+        //{
+        //    this.Location = newLocation;
+        //}
     }
 }

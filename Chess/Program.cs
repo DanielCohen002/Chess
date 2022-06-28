@@ -6,13 +6,12 @@ namespace New_Chess
     {
         static void Main(string[] args)
         {
-            Setup.startGame();
+            Setup.StartGame();
             while (1 == 1)
             {
                 Setup.printBoard();
-                Setup.playTurn();
+                Setup.TakeTurn();
                 Console.WriteLine("---------------------------");
-
             }
         }
     }
