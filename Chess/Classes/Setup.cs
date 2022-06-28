@@ -11,7 +11,9 @@ namespace New_Chess
     {
         //PROPERTIES
         static public ChessPiece[,] Board = new ChessPiece[8, 8];
-        static public List<ChessPiece> allPieces = new List<ChessPiece>();
+        static public List<ChessPiece> livePieces = new List<ChessPiece>();
+        static public List<ChessPiece> deadPieces = new List<ChessPiece>();
+
 
         //METHODS
         static public void StartGame()
@@ -44,7 +46,6 @@ namespace New_Chess
             Pawn wPawn8 = new Pawn("WP8", "White", new int[] { 1, 7 });
             #endregion
 
-
             #region assign white pieces to board
             Board[0, 0] = wRook1;
             Board[0, 1] = wHorse1;
@@ -64,8 +65,6 @@ namespace New_Chess
             Board[1, 7] = wPawn8;
             #endregion
 
-
-            //make sure to switch king and queen sides
             #region create black pieces
             Rook bRook1 = new Rook("BR1", "Black", new int[] { 7, 0 });
             Horse bHorse1 = new Horse("BH1", "Black", new int[] { 7, 1 });
@@ -84,7 +83,6 @@ namespace New_Chess
             Pawn bPawn7 = new Pawn("BP7", "Black", new int[] { 6, 6 });
             Pawn bPawn8 = new Pawn("BP8", "Black", new int[] { 6, 7 });
             #endregion
-
 
             #region assign black pieces to board
             Board[7, 0] = bRook1;
@@ -105,40 +103,39 @@ namespace New_Chess
             Board[6, 7] = bPawn8;
             #endregion
 
-
             #region all pieces to a list
-            allPieces.Add(wRook1);
-            allPieces.Add(wHorse1);
-            allPieces.Add(wBishop1);
-            allPieces.Add(wQueen);
-            allPieces.Add(wKing);
-            allPieces.Add(wBishop2);
-            allPieces.Add(wHorse2);
-            allPieces.Add(wRook2);
-            allPieces.Add(wPawn1);
-            allPieces.Add(wPawn2);
-            allPieces.Add(wPawn3);
-            allPieces.Add(wPawn4);
-            allPieces.Add(wPawn5);
-            allPieces.Add(wPawn6);
-            allPieces.Add(wPawn7);
-            allPieces.Add(wPawn8);
-            allPieces.Add(bRook1);
-            allPieces.Add(bHorse1);
-            allPieces.Add(bBishop1);
-            allPieces.Add(bQueen);
-            allPieces.Add(bKing);
-            allPieces.Add(bBishop2);
-            allPieces.Add(bHorse2);
-            allPieces.Add(bRook2);
-            allPieces.Add(bPawn1);
-            allPieces.Add(bPawn2);
-            allPieces.Add(bPawn3);
-            allPieces.Add(bPawn4);
-            allPieces.Add(bPawn5);
-            allPieces.Add(bPawn6);
-            allPieces.Add(bPawn7);
-            allPieces.Add(bPawn8);
+            livePieces.Add(wRook1);
+            livePieces.Add(wHorse1);
+            livePieces.Add(wBishop1);
+            livePieces.Add(wQueen);
+            livePieces.Add(wKing);
+            livePieces.Add(wBishop2);
+            livePieces.Add(wHorse2);
+            livePieces.Add(wRook2);
+            livePieces.Add(wPawn1);
+            livePieces.Add(wPawn2);
+            livePieces.Add(wPawn3);
+            livePieces.Add(wPawn4);
+            livePieces.Add(wPawn5);
+            livePieces.Add(wPawn6);
+            livePieces.Add(wPawn7);
+            livePieces.Add(wPawn8);
+            livePieces.Add(bRook1);
+            livePieces.Add(bHorse1);
+            livePieces.Add(bBishop1);
+            livePieces.Add(bQueen);
+            livePieces.Add(bKing);
+            livePieces.Add(bBishop2);
+            livePieces.Add(bHorse2);
+            livePieces.Add(bRook2);
+            livePieces.Add(bPawn1);
+            livePieces.Add(bPawn2);
+            livePieces.Add(bPawn3);
+            livePieces.Add(bPawn4);
+            livePieces.Add(bPawn5);
+            livePieces.Add(bPawn6);
+            livePieces.Add(bPawn7);
+            livePieces.Add(bPawn8);
             #endregion
 
         }
@@ -151,7 +148,7 @@ namespace New_Chess
 
 
 
-            foreach (ChessPiece piece in Setup.allPieces)
+            foreach (ChessPiece piece in Setup.livePieces)
             {
                 if (piece.Name == searchPiece)
                 {
@@ -162,13 +159,8 @@ namespace New_Chess
             if (pieceToMove == null)
             {
                 Console.WriteLine("invalid piece");
-                choosePiece();
-                //return pieceToMove;
+                choosePiece();                
             }
-            //else
-            //{
-            //return pieceToMove;
-            //}
 
         }
         static private int[] destination;
@@ -250,6 +242,7 @@ namespace New_Chess
                 endLocation[1] = endY;
 
                 destination = endLocation;
+
             }
         }
         static public void TakeTurn()
@@ -259,12 +252,24 @@ namespace New_Chess
             int[] startLocation = chosenPiece.Location;
             chooseDestination();
             int[] endLocation = destination;
+
+            //kill peices
+            foreach (ChessPiece piece in livePieces)
+            {
+                if (piece.Location[0] == endLocation[0] && piece.Location[1] == endLocation[1])
+                {
+                    deadPieces.Add(piece);
+                    livePieces.Remove(piece);
+                    break;
+                }
+            }
+
             Board[endLocation[0], endLocation[1]] = chosenPiece;
             Board[startLocation[0], startLocation[1]] = null;
             chosenPiece.Location = endLocation;
 
             Console.WriteLine();
-        }
+        } //add undo
         public static void printBoard()
         {
             Console.WriteLine();
@@ -291,6 +296,18 @@ namespace New_Chess
                 }
                 Console.WriteLine();
             }
+
+            //print all pieces
+            //Console.WriteLine("ALIVE:");
+            //foreach (ChessPiece piece in livePieces)
+            //{
+            //    Console.WriteLine(piece.Name);
+            //}
+            //Console.WriteLine("DEAD:");
+            //foreach (ChessPiece piece in deadPieces)
+            //{           
+            //    Console.WriteLine(piece.Name);
+            //}
         }
     }
 }

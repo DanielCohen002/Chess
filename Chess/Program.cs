@@ -12,6 +12,7 @@ namespace New_Chess
                 Setup.printBoard();
                 Setup.TakeTurn();
                 Console.WriteLine("---------------------------");
+
             }
         }
     }
